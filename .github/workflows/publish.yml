@@ -20,7 +20,8 @@ jobs:
       - run: python -m build
       - uses: pypa/gh-action-pypi-publish@release/v1
         with:
+          user: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
           repository-url: https://pypi.pkg.github.com/${{ github.repository_owner }}
-        env:
-          TWINE_USERNAME: ${{ github.actor }}
-          TWINE_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+          attestations: false
+          skip-existing: true
