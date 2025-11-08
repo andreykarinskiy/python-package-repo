@@ -1,6 +1,6 @@
 import pytest
 
-from src.minipkg import greet
+from minipkg import greet
 
 
 def test_greet_default():

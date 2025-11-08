@@ -40,6 +40,18 @@ Source = "https://github.com/OWNER/REPO"
 [tool.hatch.build]
 sources = ["src"]
 
+[tool.hatch.build.targets.wheel]
+packages = ["src/minipkg"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "src/minipkg",
+  "README.md",
+  "LICENSE",
+  "pyproject.toml",
+  "tests",
+]
+
 [tool.ruff]
 line-length = 88
 select = ["E", "F", "I", "UP", "SIM", "B"]
