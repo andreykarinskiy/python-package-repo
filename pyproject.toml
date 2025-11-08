@@ -1,0 +1,58 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "cursor-minipkg"
+version = "0.1.0"
+description = "Минималистичная библиотека-пример для публикации в GitHub Packages"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {file = "LICENSE"}
+authors = [
+  { name = "Example Maintainer", email = "maintainer@example.com" }
+]
+dependencies = []
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "ruff>=0.7",
+  "mypy>=1.10",
+  "build>=1.2",
+  "twine>=5.1"
+]
+
+[project.urls]
+Homepage = "https://github.com/OWNER/REPO"
+Documentation = "https://github.com/OWNER/REPO#readme"
+Issues = "https://github.com/OWNER/REPO/issues"
+Source = "https://github.com/OWNER/REPO"
+
+[tool.hatch.build]
+sources = ["src"]
+
+[tool.ruff]
+line-length = 88
+select = ["E", "F", "I", "UP", "SIM", "B"]
+exclude = ["build", "dist"]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+addopts = "-ra"
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.mypy]
+python_version = "3.9"
+strict = true
+packages = ["minipkg"]
+mypy_path = "src"
