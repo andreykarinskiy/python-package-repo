@@ -21,7 +21,7 @@ jobs:
       - uses: pypa/gh-action-pypi-publish@release/v1
         with:
           user: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.GH_PACKAGES_TOKEN }}
           repository-url: https://pypi.pkg.github.com/${{ github.repository_owner }}
           attestations: false
           skip-existing: true
