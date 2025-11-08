@@ -1,70 +1,37 @@
 [build-system]
-requires = ["hatchling>=1.24"]
-build-backend = "hatchling.build"
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
 
 [project]
-name = "cursor-minipkg"
+name = "python-package-repo"
 version = "0.1.0"
-description = "Минималистичная библиотека-пример для публикации в GitHub Packages"
+description = "A simple example package demonstrating a src layout."
 readme = "README.md"
-requires-python = ">=3.9"
-license = {file = "LICENSE"}
+requires-python = ">=3.8"
+license = { file = "LICENSE" }
 authors = [
-  { name = "Example Maintainer", email = "maintainer@example.com" }
+    { name = "Andrey Karinskiy" }
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent"
 ]
 dependencies = []
-classifiers = [
-  "Development Status :: 3 - Alpha",
-  "Programming Language :: Python",
-  "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3.9",
-  "License :: OSI Approved :: MIT License",
-  "Operating System :: OS Independent"
-]
 
 [project.optional-dependencies]
 dev = [
-  "pytest>=8.0",
-  "ruff>=0.7",
-  "mypy>=1.10",
-  "build>=1.2",
-  "twine>=5.1"
+    "build>=1.2.1",
+    "twine>=5.1.1"
 ]
 
-[project.urls]
-Homepage = "https://github.com/OWNER/REPO"
-Documentation = "https://github.com/OWNER/REPO#readme"
-Issues = "https://github.com/OWNER/REPO/issues"
-Source = "https://github.com/OWNER/REPO"
+[tool.setuptools]
+package-dir = {"" = "src"}
 
-[tool.hatch.build]
-sources = ["src"]
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["python_package_repo*"]
 
-[tool.hatch.build.targets.wheel]
-packages = ["src/minipkg"]
 
-[tool.hatch.build.targets.sdist]
-include = [
-  "src/minipkg",
-  "README.md",
-  "LICENSE",
-  "pyproject.toml",
-  "tests",
-]
-
-[tool.ruff]
-line-length = 88
-select = ["E", "F", "I", "UP", "SIM", "B"]
-exclude = ["build", "dist"]
-
-[tool.pytest.ini_options]
-minversion = "8.0"
-addopts = "-ra"
-testpaths = ["tests"]
-pythonpath = ["src"]
-
-[tool.mypy]
-python_version = "3.9"
-strict = true
-packages = ["minipkg"]
-mypy_path = "src"
